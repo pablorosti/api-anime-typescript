@@ -1,1 +1,1 @@
-Demo: https://distracted-benz-87e226.netlify.app/
+Demo: https://animes-app-typescript.netlify.app/
