@@ -15,9 +15,7 @@ export const NavBar = () => {
                         <li className="nav-item">
                             <Link to={'/manga'} className="nav-link">Mangas</Link>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link">Informacion</a>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
