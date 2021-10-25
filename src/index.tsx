@@ -2,16 +2,33 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { NavBar } from './components/NavBar';
+
+import 'bootswatch/dist/flatly/bootstrap.min.css';
+import { Manga } from './pages/Manga';
+import { DataProvider } from './context/DataProvider';
+
+
+const Index = () => {
+  return (
+    <DataProvider>
+      <BrowserRouter>
+        <NavBar />
+        <Switch>
+          <div className='container'>
+            <Route exact path={'/'} component={App} />
+            <Route exact path={'/manga'} component={Manga} />
+          </div>
+        </Switch>
+      </BrowserRouter>
+    </DataProvider>
+  )
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+
+  <Index />
+  ,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

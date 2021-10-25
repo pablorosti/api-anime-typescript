@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { Card } from "./components/Card";
+import { Spinner } from "./components/Spinner";
+import { Container } from "./elements/Container";
+import { Title } from "./elements/Title";
+import { useGetRecomendations } from "./hooks/useGetRecomendations";
+
 
 function App() {
+
+  const [animes] = useGetRecomendations();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Title>Animes</Title>
+
+      {
+        animes.length === 0
+          ? <Spinner />
+          : <Container>
+
+            {
+              animes.map((anime) => {
+                return <Card key={anime.mal_id}
+                  image_url={anime.image_url}
+                  title={anime.title}
+                  url={anime.url}
+                />
+
+              })
+
+            }
+          </Container>
+      }
+
+    </>
   );
 }
+
 
 export default App;
